@@ -1,0 +1,10 @@
+cff-version: 0.0.1
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Lopéz"
+  given-names: "Leandro"
+- family-names: "Jiménez"
+  given-names: "Luis Camilo"
+title: "LangChain GenAI KM"
+date-released: 2023-11-08
+url: "https://github.com/luisjimenezgloballogic/langchain_chatbot"

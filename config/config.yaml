@@ -1,0 +1,49 @@
+# =================================================
+# Extractor and Store
+# =================================================
+
+github:
+  repos:
+    - owner: langchain-ai
+      repo: langchain
+      path: docs/docs
+
+loader:
+  jsonl:
+    file_directory: data
+    file_base_name: github_data_store
+    file_type: jsonl
+    file_name: github_data_store_file.jsonl
+
+# =================================================
+# Embeddings and Vector Database
+# ================================================= 
+
+embedding:
+  text_splitter:
+    recursive_character:
+      chunk_size: 1600
+      chunk_overlap: 160
+  model:
+    openai: "text-embedding-ada-002"
+  store:
+    chroma:
+      path: "chroma_docs"
+
+# =================================================
+# Retriever and Chat
+# =================================================
+retriever:
+  search_kwargs:
+    k: 3
+
+chain:
+  conversational:
+    verbose: False
+  qa:
+    chain_type: "stuff"
+
+chat:
+  model_name: "gpt-3.5-turbo"
+  temperature: 0.2
+  max_tokens: 1000

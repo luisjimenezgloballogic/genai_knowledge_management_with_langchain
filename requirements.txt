@@ -1,0 +1,13 @@
+chromadb==0.4.13
+emoji==2.8.0
+jsonlines==4.0.0
+langchain==0.0.308
+openai==0.28.1
+python-dotenv==1.0.0
+PyYAML==6.0.1
+requests==2.31.0
+rich==13.6.0
+termcolor==2.3.0
+tiktoken==0.5.1
+torch==2.1.0
+transformers==4.34.0
