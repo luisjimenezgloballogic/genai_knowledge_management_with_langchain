@@ -57,7 +57,7 @@ Our project, which is hosted on the GenAI Knowledge Management with LangChain (L
 
 - `protocols`: Directory containing the interfaces or protocols that define the contracts for the classes in the models and factories modules, following SOLID principles and allowing for greater modularity and scalability of the project.
 
-[*View GitHub repo*](https://github.com/luisjimenezgloballogic/langchain_genai_km)
+[*View GitHub repo*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain)
 
 ### Workflow
 
@@ -98,7 +98,7 @@ class Application:
         generator: IGenerator = self.generator_factory.create_generator(retriever, llm)
         gui.run(generator)
 ```
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/main.py#L86)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/main.py#L86)
 
 ### Store Data
 
@@ -158,7 +158,7 @@ Files are then processed one by one in `_process_file_or_directory`, where a dis
 
 It is observed that `GitHubExtractor` only needs to work with the interfaces `IDataPreprocessor` and `IDataStore`, which allows it to be decoupled from the concrete implementations of preprocessing and storage.
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/extractor.py#L23)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/extractor.py#L23)
 
 #### Data Preprocessor
 
@@ -180,7 +180,7 @@ class TextCleaner:
         ⁝       ⁝       ⁝
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/preprocessor.py#L8)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/preprocessor.py#L8)
 
 #### Data store
 
@@ -200,11 +200,11 @@ class JSONLDataStore:
             jsonl_file.write(json.dumps(data_dict) + "\n")
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/data_store.py#L9)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/data_store.py#L9)
 
 The `FileSystemHelper` class manages the creation and maintenance of the data file. It handles the file name and paths, and ensures that the data directory is prepared for storage.
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/utils/__init__.py#L14)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/utils/__init__.py#L14)
 
 ### Store Vectors
 
@@ -226,7 +226,7 @@ class JSONLLoader(BaseLoader):
             return (Document(page_content=obj.get("data", ""), metadata=obj.get("metadata", {})) for obj in reader )
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/loader.py#L12)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/loader.py#L12)
 
 #### Text Splitter
 
@@ -241,7 +241,7 @@ class RecursiveCharacterTextSplitterFactory:
         return RecursiveCharacterTextSplitter(chunk_size=self.chunk_size, length_function=len, chunk_overlap=self.chunk_overlap)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/text_splitter.py#L16)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/text_splitter.py#L16)
 
 #### Embedding
 
@@ -256,7 +256,7 @@ class OpenAIEmbeddingsFactory:
         return OpenAIEmbeddings(model=self.embedding_model)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/embedding.py#L16)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/embedding.py#L16)
 
 #### Vector Store
 
@@ -278,7 +278,7 @@ class ChromaFactory:
         return Chroma(embedding_function=embeddings, persist_directory=self.path)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/vector_store.py#L19)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/vector_store.py#L19)
 
 ### Chat
 
@@ -297,7 +297,7 @@ class NumDocsRetrieverFactory:
 
 `VectorStoreRetriever` acts as a wrapper around `VectorStore`, leveraging its search methods, such as similarity and MMR (Maximal Marginal Relevance), to query and retrieve the most similar and relevant texts in relation to a given query.
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/retriever.py#L13)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/retriever.py#L13)
 
 #### Language Model
 
@@ -312,7 +312,7 @@ class ChatOpenAIFactory:
         return ChatOpenAI(model=self.model_name, temperature=self.temperature, max_tokens=self.max_tokens)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/language_model.py#L20)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/language_model.py#L20)
 
 #### Generator
 
@@ -332,7 +332,7 @@ class QAGenerator(Generator):
         return answer
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/generator.py#L27)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/generator.py#L27)
 
 `QAGeneratorFactory` is responsible for compiling the necessary processing chain that feeds the `QAGenerator`. Using the `RetrievalQA` class from LangChain, `QAGeneratorFactory` sets up a `chain` with the language model `llm` and the document retrieval system `retriever`.
 
@@ -344,7 +344,7 @@ class QAGeneratorFactory:
         return QAGenerator(chain)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/generator.py#L31)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/generator.py#L31)
 
 `ConversationalGenerator` is designed to maintain a history of the conversation, allowing it to generate responses that take into account the previous context. This history is stored in a list of tuples, where each tuple contains a query and the associated response. The `get_answer` method collects the query and chat history, passes them through a `chain` processing chain, and stores the query and the generated response in the history.
 
@@ -361,7 +361,7 @@ class ConversationalGenerator(Generator):
         return answer
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/generator.py#L20)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/generator.py#L20)
 
 The creation of `chain` falls to `ConversationalGeneratorFactory`, which configures LangChain's `ConversationalRetrievalChain` with the language model `llm` and the retrieval system `retriever`. This chain is capable of condensing the conversation history and the current query to retrieve relevant documents and generate conversational responses informed by previous interactions.
 
@@ -373,7 +373,7 @@ class ConversationalGeneratorFactory:
         return ConversationalGenerator(chain)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/generator.py#L17)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/generator.py#L17)
 
 #### GUI
 
@@ -401,7 +401,7 @@ class CommandLineChatGUI(ChatGUI):
             self._ia_message(answer)
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/models/gui.py#L23)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/models/gui.py#L23)
 
 Here, `_intro` displays the welcome messages, `_user_message` presents the prompt for the user to enter their query, `_get_query` collects and returns the user's query, `_quit` determines if the user's query indicates a desire to exit the chat, and `_ia_message` displays the generated response `answer`.
 
@@ -420,7 +420,7 @@ class CommandLineChatGUIFactory:
         return ["[red]AI: [/red]"]
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/factories/gui.py#L17)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/factories/gui.py#L17)
 
 ## Results
 
@@ -442,7 +442,7 @@ loader:
     ⁝       ⁝       ⁝
 ```
 
-[*View full code*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/config/config.yaml#L5)
+[*View full code*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/config/config.yaml#L5)
 
 From this repository, the file `data/github_data_store_file.jsonl` was obtained, which contains the documentation of the repository.
 
@@ -452,11 +452,11 @@ From this repository, the file `data/github_data_store_file.jsonl` was obtained,
 ⁝       ⁝       ⁝
 ```
 
-[*View JSONL file*](https://github.com/luisjimenezgloballogic/langchain_genai_km/blob/main/data/github_data_store_file.jsonl)
+[*View JSONL file*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/blob/main/data/github_data_store_file.jsonl)
 
 With this data, the vector database was created, and the application was run using the `QAGenerator` and `ConversationalGenerator` implementations, generating two basic queries about LangChain: `what is langchain?` and `give me an example`.
 
-[*Run App Config*](https://github.com/luisjimenezgloballogic/langchain_genai_km/tree/main/config)
+[*Run App Config*](https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain/tree/main/config)
 
 Since the `gpt-3.5-turbo` model from OpenAI was used for this project, the responses were compared with those generated by OpenAI's ChatGPT 3.5, which uses the same model in its operation, to verify that the responses indeed come from the vector database and not from the language model used.
 
