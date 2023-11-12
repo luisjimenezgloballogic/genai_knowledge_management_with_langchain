@@ -542,7 +542,7 @@ Our comparison between the `QAGenerator`'s outputs and those of ChatGPT 3.5 high
 In conclusion, LangChain stands out as an adaptable framework that can significantly improve the development of NLP applications. Its ability to integrate with various language models and databases empowers developers to create sophisticated applications that are context-aware and can respond to the dynamic requirements of information retrieval tasks. The project exemplifies how the strategic use of LangChain can lead to the development of intelligent systems capable of maintaining meaningful dialogue, a critical asset in the field of AI-driven communication.
 
 ## References
-- López, L., Jiménez, L.C. (2023). GenAI Knowledge Management with LangChain [Software]. https://github.com/luisjimenezgloballogic/langchain_genai_km
+- López, L., Jiménez, L.C. (2023). GenAI Knowledge Management with LangChain [Software]. https://github.com/luisjimenezgloballogic/genai_knowledge_management_with_langchain
 - LangChain. (n.d.). Chat models. LangChain Documentation. https://python.langchain.com/docs/integrations/chat/
 - LangChain. (n.d.). Retrieval-augmented generation (RAG). LangChain Documentation. https://python.langchain.com/docs/use_cases/question_answering/
 - Chase, H. (2022). LangChain [Software]. https://github.com/langchain-ai/langchain
